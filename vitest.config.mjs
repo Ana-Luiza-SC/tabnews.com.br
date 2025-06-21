@@ -32,6 +32,12 @@ export default defineConfig({
           include: ['**/interface/**/*.{test,spec}.{js,ts}'],
         },
       },
+      
     ],
+    coverage: {
+      reporter: ['text', 'json', 'html'],
+      include: ['models/authorization.js'],
+      exclude: ['tests/**', 'infra/**', '**/node_modules/**'],
+    },
   },
 });
