@@ -1,17 +1,10 @@
-import React from "react";
-import "./styles.css"; 
+import { isPasswordMismatch } from 'caminho/para/passwordValidation';
 
-export default function PasswordMatchBar({ password, confirmPassword }) {
+function PasswordFeedback({ password, confirmPassword }) {
+  const mismatch = isPasswordMismatch(password, password, confirmPassword);
 
-  if (!password && !confirmPassword) return null;
-
-  if (password === confirmPassword && password.length > 0) {
-    return <div className="password-match success">✔️ Senhas conferem!</div>;
-  }
-
-  if (confirmPassword && password !== confirmPassword) {
-    return <div className="password-match error">❌ Senhas não conferem</div>;
-  }
+  if (mismatch) return <div>Senhas não conferem</div>;
   
-  return null;
+  else return <div>Senhas conferem!</div>;
+
 }
